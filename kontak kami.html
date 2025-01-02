@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Sekolah</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .navbar-brand img {
+      width: 50px;
+    }
+    .header {
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      padding: 120px 0;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="./asset/logo.png" alt="Logo">
+        SMKN 4 Tasikmalaya
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link text-white" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="profile.html">Profil</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="galeri.html">Galeri</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="ekstrakulikuler.html">Ekstrakurikuler</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="jurusan.html">Jurusan</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="kontak.html">Kontak</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <section>
+    <h2 class="section-title text-center my-4">KONTAK KAMI</h2>
+    <div class="container content">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title text-center">ISI FORMULIR KONTAK</h3>
+              <form id="contact-form">
+                <div class="form-group">
+                  <label for="name">Nama Lengkap</label>
+                  <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                  <label for="message">Pesan</label>
+                  <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Kirim Pesan</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </div>
+  <script>
+    const form = document.getElementById('contact-form');
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      const fullName = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+      const contactData = {
+        name: fullName,
+        email: email,
+        message: message
+      };
+      let storedData = JSON.parse(localStorage.getItem('contacts')) || [];
+      storedData.push(contactData);
+      localStorage.setItem('contacts', JSON.stringify(storedData));
+      form.reset();
+      window.location.href = 'formulir.html';
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
